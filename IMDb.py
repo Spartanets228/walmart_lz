@@ -1,13 +1,7 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.keys import Keys
-import numpy as np
-import time
+from imdb import IMDb
 
+ia = IMDb()
+top = ia.get_top250_movies()
 
-options = Options() 
-driver = webdriver.Chrome(options=options)
-driver.get('https://www.imdb.com/chart/top/?ref_=hm_nv_menu')
-
-
+for i, movie in enumerate(top[:10], start=1):
+    print(f"{i}. {movie['title']} - {movie['rating']}")
