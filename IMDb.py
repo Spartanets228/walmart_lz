@@ -9,6 +9,7 @@ options = Options()
 driver = webdriver.Chrome(options=options)
 driver.get('https://www.imdb.com/chart/top/?ref_=hm_nv_menu')
 
+time.sleep(6)
 
 start = time.time()
 movies = driver.find_elements(By.XPATH, '//*[@id="__next"]/main/div/div[3]/section/div/div[2]/div/ul/li//h3')
@@ -61,10 +62,10 @@ with open('top_250_movies.csv', 'w', newline='', encoding='utf-8') as file:
 with open('time_of_work', 'w', newline='', encoding='utf-8') as file2:
     writer2 = csv.writer(file2)
     writer2.writerow(['Функция', 'Время выполнения (сек)'])
-    writer2.writerow(['Сбор названий', '   ', movies_time])
-    writer2.writerow(['Сбор годов выпуска','   ', years_time])
-    writer2.writerow(['Сбор продолжительности','   ', duration_time])
-    writer2.writerow(['Сбор возрастных ограничений','   ', raitings_time])
+    writer2.writerow(['Сбор названий', movies_time])
+    writer2.writerow(['Сбор годов выпуска', years_time])
+    writer2.writerow(['Сбор продолжительности', duration_time])
+    writer2.writerow(['Сбор возрастных ограничений', raitings_time])
 
 
 driver.quit() 
